@@ -64,7 +64,7 @@ plt.savefig('result/original_bgr.jpg', dpi=300)
 plt.show()
 ```
 
-![原始图像 (RGB视图)](result/original_bgr.jpg)
+![原始图像 (RGB视图)](results/original_bgr.jpg)
 *图 1-1：通过 OpenCV 读取并转换至 RGB 空间显示的原始图像*
 
 ### 2.3 颜色空间转换
