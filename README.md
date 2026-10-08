@@ -64,6 +64,9 @@ plt.savefig('result/original_bgr.jpg', dpi=300)
 plt.show()
 ```
 
+![原始图像 (RGB视图)](result/original_bgr.jpg)
+*图 1-1：通过 OpenCV 读取并转换至 RGB 空间显示的原始图像*
+
 ### 2.3 颜色空间转换
 将图像从 OpenCV 默认的 BGR 空间分别转换至标准的 RGB 空间以及单通道的灰度空间，为后续的滤波和特征处理打下基础。
 
@@ -82,6 +85,11 @@ plt.title('Gray Image')
 plt.savefig('result/gray_image.jpg', dpi=300)
 plt.show()
 ```
+![RGB彩色图像](result/rgb_image.jpg)
+*图 1-2：标准 RGB 空间彩色图像*
+
+![灰度图像](result/gray_image.jpg)
+*图 1-3：经过加权平均法转换后的单通道灰度图像*
 
 ### 2.4 人为添加模拟噪声
 为了评估后续滤波器的去噪效能，采用 `scikit-image` 的 `random_noise` 工具包，在原图基础上分别注入污染程度较高的椒盐噪声（`amount=0.4`）与高斯噪声（`mean=0.2, var=0.03`）。
@@ -110,6 +118,8 @@ plt.tight_layout()
 plt.savefig('result/noise_comparison.jpg', dpi=300)
 plt.show()
 ```
+![噪声对比图](result/noise_comparison.jpg)
+*图 2-1：原图与分别注入 40% 椒盐噪声、高斯噪声后的退化图像对比*
 
 ### 2.5 经典图像滤波方法综合对比
 为了系统性评估各项滤波器的性能，将浮点型噪声图像转换回 `uint8` 格式 (`0-255`)，并分别应用均值滤波、中值滤波、高斯滤波以及双边滤波进行处理。
@@ -180,6 +190,9 @@ plt.savefig('result/advanced_filter_comparison.jpg', dpi=300)
 plt.show()
 ```
 
+![高级滤波对比图](result/advanced_filter_comparison.jpg)
+*图 3-1：均值滤波、中值滤波、高斯滤波以及双边滤波在椒盐与高斯噪声下的去噪效能对比*
+
 ### 2.6 滤波参数探索：卷积核尺寸对高斯滤波的影响
 通过设置 $3 \times 3$、$5 \times 5$ 以及 $7 \times 7$ 三种不同尺度的卷积核，研究参数变化对高斯滤波图像模糊程度与去噪深度的边缘效应。
 
@@ -205,6 +218,9 @@ plt.tight_layout()
 plt.savefig('result/kernel_size_comparison.jpg', dpi=300)
 plt.show()
 ```
+
+![卷积核尺寸对比图](result/kernel_size_comparison.jpg)
+*图 3-2：不同尺寸卷积核（3x3, 5x5, 7x7）对高斯滤波平滑与模糊程度的影响*
 
 ### 2.7 手动实现彩色图像中值滤波
 通过编写多层循环与Padding，实现一个中值滤波器函数。
@@ -244,6 +260,9 @@ plt.tight_layout()
 plt.savefig('result/manual_median.jpg', dpi=300)
 plt.show()
 ```
+
+![手动中值滤波对比图](result/manual_median.jpg)
+*图 3-3：自研底层逻辑手动实现彩色图像中值滤波与椒盐噪声图像的对比效果*
 
 ---
 
